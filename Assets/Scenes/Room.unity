@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 458116695}
   - component: {fileID: 458116694}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Connect Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,7 +375,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 458116695}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961732993}
+        m_TargetAssemblyTypeName: RoomManager, Assembly-CSharp
+        m_MethodName: OnCreateRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &458116695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,8 +901,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f586c5aba5c8a40a78d6ba89339051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleInputFiled: {fileID: 0}
-  capacityInputField: {fileID: 0}
+  titleInputFiled: {fileID: 548688879}
+  capacityInputField: {fileID: 685765167}
+  roomPrefab: {fileID: 1228452538027547026, guid: f36da1a406508bf43ae8b9bc797acc19, type: 3}
+  PlayerCount: {fileID: 0}
   parentTransform: {fileID: 0}
 --- !u!4 &961732994
 Transform:
