@@ -1,32 +1,32 @@
+using Photon.Pun;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using Photon.Realtime;
+using Photon.Pun;
 
-public class CreateManager : MonoBehaviourPunCallbacks
+public class Create : MonoBehaviourPunCallbacks
 {
     [SerializeField] int count = 0;
-    [SerializeField] Transform[] transforms;
+    [SerializeField] Transform[] transforms; 
 
-    private void Awake()
-    {
-        Create();
-    }
-
+   
     public void Create()
-   {
+    {
         PhotonNetwork.Instantiate
         (
+
             "Character",
-            Vector3.zero,
+            transforms[count++].position,
             Quaternion.identity
 
         );
-   }
+    }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         count--;
     }
+
 }
