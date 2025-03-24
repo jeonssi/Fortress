@@ -11,22 +11,26 @@ public class CreateManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        if (transforms == null || transforms.Length == 0)
+        {
+            return;
+        }
         Create();
     }
 
     public void Create()
    {
+        int index = Random.Range(0, transforms.Length);
+        Transform spawnPoint = transforms[index];
+
         PhotonNetwork.Instantiate
         (
             "Character",
-            Vector3.zero,
+            transforms[Random.Range(0,transforms.Length)].position,
             Quaternion.identity
 
         );
    }
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        count--;
-    }
+ 
 }

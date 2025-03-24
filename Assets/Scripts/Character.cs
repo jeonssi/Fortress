@@ -7,20 +7,17 @@ using UnityEngine;
 
 [RequireComponent(typeof(Move))]
 [RequireComponent (typeof(Rotation))]
-[RequireComponent(typeof (Create))]
 public class Character : MonoBehaviourPun
 {
     [SerializeField] Move move;
     [SerializeField] Rotation rotation;
     [SerializeField] GameObject remoteCamera;
     [SerializeField] Rigidbody rigidBody;
-    [SerializeField] Create create;
     private void Awake()
     {
         move = GetComponent<Move>();
         rigidBody = GetComponent<Rigidbody>();
         rotation = GetComponent<Rotation>();    
-        create = GetComponent<Create>();    
     }
     void Start()
     {
@@ -53,7 +50,7 @@ public class Character : MonoBehaviourPun
         }
         move.OnMove(rigidBody);
         rotation.RotateY(rigidBody);
-        create.OnPlayerLeftRoom(Player otherPlayer)
+       
     }
     public void DisableCamera()
     {
