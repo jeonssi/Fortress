@@ -1,4 +1,4 @@
-using Photon.Pun;
+﻿using Photon.Pun;
 using Photon.Realtime;
 
 using System.Collections;
@@ -13,23 +13,21 @@ public class Character : MonoBehaviourPun
     [SerializeField] Rotation rotation;
     [SerializeField] GameObject remoteCamera;
     [SerializeField] Rigidbody rigidBody;
+
+    [SerializeField] Pause pausePanel;
     private void Awake()
     {
         move = GetComponent<Move>();
         rigidBody = GetComponent<Rigidbody>();
-        rotation = GetComponent<Rotation>();    
+        rotation = GetComponent<Rotation>();   
+        
+        pausePanel = FindObjectOfType<Pause>(true);
     }
+
     void Start()
     {
         DisableCamera();
-        //if (photonView.IsMine == true)
-        //{
-        //    if (remoteCamera == null)
-        //    {
-        //        remoteCamera = GameObject.Find("Camera");
-        //    }
-        //    remoteCamera.SetActive(false);
-        //}
+      
     }
 
     private void Update()
@@ -39,8 +37,15 @@ public class Character : MonoBehaviourPun
         {
             return;
         }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            MouseManager.Instance.SetMouse(true);
+
+            pausePanel.gameObject.SetActive(true);
+
+        }
         move.OnkeyUpdate();
-        rotation.OnMouseUpdate();
+        rotation.OnMouseX();
     }
     private void FixedUpdate()
     {
