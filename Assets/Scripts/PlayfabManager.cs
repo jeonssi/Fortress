@@ -8,6 +8,7 @@ using PlayFab;
 
 public class PlayfabManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameObject failurePanel;
     [SerializeField] InputField emailInputField;
     [SerializeField] InputField passwordInputField;
 
@@ -38,6 +39,7 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void Fail(PlayFabError playFabEroor)
     {
+        failurePanel.SetActive(true);
         Debug.Log(playFabEroor.ToString());
     }
 }
